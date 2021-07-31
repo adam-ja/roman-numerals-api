@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('/integer-conversion')
+    ->name('integer-conversion.')
+    ->group(function () {
+        Route::post('convert', 'IntegerConversionController@convert')->name('convert');
+        Route::get('latest', 'IntegerConversionController@latest')->name('latest');
+        Route::get('most-popular', 'IntegerConversionController@mostPopular')->name('most-popular');
+    });

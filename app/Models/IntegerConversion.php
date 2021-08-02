@@ -24,7 +24,7 @@ class IntegerConversion extends Model
     protected $primaryKey = 'integer_value';
 
     protected $attributes = [
-        'conversion_count' => 0,
+        'conversion_count' => 1,
     ];
 
     protected $fillable = [

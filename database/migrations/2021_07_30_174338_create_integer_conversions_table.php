@@ -11,7 +11,7 @@ class CreateIntegerConversionsTable extends Migration
         Schema::create('integer_conversions', function (Blueprint $table) {
             $table->integer('integer_value')->primary();
             $table->string('converted_value')->unique();
-            $table->integer('conversion_count')->default(0);
+            $table->integer('conversion_count')->default(1);
             $table->timestamps();
         });
     }

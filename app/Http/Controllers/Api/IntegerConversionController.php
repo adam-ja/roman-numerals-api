@@ -20,6 +20,7 @@ class IntegerConversionController extends Controller
     ): IntegerConversionResource {
         $integer = $request->input('integer');
 
+        /** @var IntegerConversion $conversion */
         $conversion = IntegerConversion::where('integer_value', $integer)->firstOr(
             fn() => (IntegerConversion::create([
                 'integer_value'   => $integer,
@@ -27,7 +28,9 @@ class IntegerConversionController extends Controller
             ]))
         );
 
-        $conversion->increment('conversion_count');
+        if (! $conversion->wasRecentlyCreated) {
+            $conversion->increment('conversion_count');
+        }
 
         return new IntegerConversionResource($conversion);
     }
